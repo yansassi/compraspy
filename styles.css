@@ -1,0 +1,1166 @@
+/* ==========================================
+   MOCKUP COMPRAS PARAGUAI - ESTILOS GERAIS
+   ========================================== */
+
+:root {
+    --color-primary: #004b93;      /* Azul principal */
+    --color-primary-dark: #00376d; /* Azul escuro */
+    --color-accent: #e20613;       /* Vermelho */
+    --color-accent-hover: #b8050f; /* Vermelho hover */
+    --color-bg: #f4f6f9;           /* Cinza de fundo do site */
+    --color-text-dark: #333333;    /* Texto escuro */
+    --color-text-light: #666666;   /* Texto secundário */
+    --color-border: #e2e8f0;       /* Cor das bordas */
+    --color-yellow-mockup: #fff200;/* Amarelo do mockup */
+    --font-main: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg);
+    color: var(--color-text-dark);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Container de Largura Total Desktop */
+.container {
+    max-width: 1740px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px;
+}
+
+/* ==========================================
+   HEADER COMPRAS PARAGUAI
+   ========================================== */
+
+/* Barra Vermelha de Aviso Superior */
+.top-announcement-bar {
+    background-color: var(--color-accent);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 6px 0;
+    text-align: center;
+}
+
+.container-announcement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-entendi {
+    background-color: #ffffff;
+    color: var(--color-accent);
+    border: none;
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-weight: 800;
+    cursor: pointer;
+    font-size: 11px;
+    text-transform: uppercase;
+    transition: background-color 0.2s;
+}
+
+.btn-entendi:hover {
+    background-color: #f1f1f1;
+}
+
+/* Barra Superior Azul de Links Auxiliares */
+.top-nav-bar {
+    background-color: var(--color-primary-dark);
+    color: #ffffff;
+    font-size: 11px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.top-nav-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-social {
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 2px;
+}
+
+.icon-social:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.top-link {
+    color: rgba(255, 255, 255, 0.8);
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.top-link:hover {
+    color: #ffffff;
+}
+
+.language-selector {
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.language-selector:hover {
+    color: #ffffff;
+}
+
+/* Header Principal Azul */
+.main-header {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    padding: 20px 0;
+}
+
+.header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Logotipo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    background-color: var(--color-accent);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-main {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+.logo-sub {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Barra de Busca */
+.search-container {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-family: var(--font-main);
+    color: var(--color-text-dark);
+    outline: none;
+}
+
+.search-button {
+    background-color: var(--color-accent);
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.search-button:hover {
+    background-color: var(--color-accent-hover);
+}
+
+/* Ações do Usuário */
+.user-actions {
+    display: flex;
+    gap: 25px;
+}
+
+.user-account, .wishlist {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+}
+
+.user-account:hover, .wishlist:hover {
+    opacity: 0.9;
+}
+
+.action-icon {
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.action-small {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+}
+
+.action-bold {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Barra de Categorias e Dólar */
+.categories-nav {
+    background-color: var(--color-primary-dark);
+    color: #ffffff;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.menu-categories {
+    background-color: rgba(255, 255, 255, 0.08);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    gap: 8px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu-categories:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.burger-icon {
+    font-size: 16px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 20px;
+    height: 100%;
+    font-weight: 600;
+    font-size: 12px;
+    transition: background-color 0.2s;
+    letter-spacing: 0.5px;
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.icon-nav {
+    font-size: 14px;
+}
+
+.dolar-today {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dolar-label {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.dolar-value {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.dolar-trend-down {
+    color: #ff4a5a;
+    font-weight: 700;
+}
+
+/* ==========================================
+   BREADCRUMB
+   ========================================== */
+.breadcrumb-container {
+    background-color: #ffffff;
+    padding: 12px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.breadcrumb {
+    font-size: 12px;
+    color: var(--color-text-light);
+}
+
+.breadcrumb span {
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+/* ==========================================
+   CONTEÚDO PRINCIPAL (LAYOUT 3 COLUNAS)
+   ========================================== */
+.main-content {
+    display: flex;
+    gap: 24px;
+    padding-top: 20px;
+    padding-bottom: 60px;
+    align-items: flex-start;
+}
+
+/* COLUNA 1: BANNER LATERAL ESQUERDA (300px) */
+.sidebar-left-banner {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+/* COLUNA 2: FILTROS E BANNER LG (240px) */
+.sidebar-filters {
+    width: 240px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* COLUNA DIREITA (300px) */
+.sidebar-right {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+/* COLUNA CENTRAL (Largura Fixa de 818px para Banners e Grade) */
+.content-center {
+    width: 818px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ==========================================
+   FILTROS LATERAIS
+   ========================================== */
+.filters-box {
+    background-color: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.filters-box h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-group h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-bottom: 10px;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.scrollable-options {
+    max-height: 150px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Scrollbar estilizada simples */
+.scrollable-options::-webkit-scrollbar {
+    width: 4px;
+}
+.scrollable-options::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 4px;
+}
+
+.filter-options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--color-text-light);
+    cursor: pointer;
+    user-select: none;
+}
+
+.filter-options input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: var(--color-primary);
+}
+
+.price-inputs {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.price-input {
+    width: 60px;
+    padding: 6px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.btn-price-ok {
+    background-color: var(--color-accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn-price-ok:hover {
+    background-color: var(--color-accent-hover);
+}
+
+/* Anúncio LG Importados */
+.fixed-ad-container {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+
+.sidebar-ad-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================================
+   CONTEÚDO CENTRAL - RESULTADOS DE BUSCA
+   ========================================== */
+.search-results-header {
+    background-color: #ffffff;
+    padding: 15px 20px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.search-results-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.results-count {
+    font-size: 13px;
+    color: var(--color-primary);
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.results-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.view-modes {
+    display: flex;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.btn-view-mode {
+    background-color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--color-text-light);
+}
+
+.btn-view-mode.active {
+    background-color: #e2e8f0;
+    color: var(--color-text-dark);
+}
+
+.sort-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sort-label {
+    font-size: 12px;
+    color: var(--color-text-light);
+    font-weight: 500;
+}
+
+.sort-select {
+    padding: 6px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    outline: none;
+}
+
+/* ==========================================
+   SUGESTÕES E CATEGORIAS RELACIONADAS
+   ========================================== */
+.suggestions-bar {
+    background-color: #ffffff;
+    padding: 12px 20px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--color-text-light);
+}
+
+.suggestions-title {
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-right: 5px;
+}
+
+.suggestion-tag {
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+.suggestion-tag:hover {
+    text-decoration: underline;
+}
+
+.tag-count {
+    color: var(--color-text-light);
+    font-size: 11px;
+}
+
+.show-more-suggestions {
+    font-weight: 700;
+    color: var(--color-primary);
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.text-blue {
+    color: var(--color-primary) !important;
+}
+
+/* ==========================================
+   LISTAGEM DE PRODUTOS
+   ========================================== */
+.products-list {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.product-item {
+    background-color: #ffffff;
+    border-bottom: 1px solid #eaeaea;
+    padding: 18px 24px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    transition: background-color 0.2s;
+    min-height: 130px;
+}
+
+.product-item:last-child {
+    border-bottom: none;
+}
+
+.product-item:hover {
+    background-color: #fbfbfb;
+}
+
+.product-img-container {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.product-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.product-title {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 2px;
+    color: #0056b3; /* Azul link brilhante de e-commerce */
+}
+
+.product-title a {
+    color: #0056b3;
+    transition: color 0.1s;
+}
+
+.product-title a:hover {
+    text-decoration: underline;
+    color: #00376d;
+}
+
+.product-description {
+    font-size: 11px;
+    color: #555555;
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-pricing {
+    width: 150px;
+    flex-shrink: 0;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 8px;
+}
+
+.price-container {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+}
+
+.price-usd-label {
+    font-size: 10px;
+    color: #888888;
+}
+
+.price-usd {
+    font-size: 18px;
+    font-weight: 800;
+    color: #e20613; /* Vermelho destacado */
+    margin: 2px 0;
+}
+
+.price-brl {
+    font-size: 11px;
+    color: #666666;
+    font-weight: 500;
+}
+
+.btn-offers {
+    background-color: #004b93; /* Azul corporativo original */
+    color: #ffffff;
+    border: none;
+    border-radius: 20px; /* Formato pílula (pill-shaped) como na imagem original */
+    padding: 7px 18px;
+    font-weight: 700;
+    font-size: 11px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.2s, transform 0.1s;
+    width: auto;
+    min-width: 115px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.btn-offers:hover {
+    background-color: #00376d;
+}
+
+/* ==========================================
+   ÁREAS DE MOCKUP PARA BANNERS (ESPAÇOS AMARELOS)
+   ========================================== */
+
+/* Linha de Banners Duplos (Centralizados e Colados) */
+.banners-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    background-color: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 16px 0;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.banners-row .mockup-banner-area {
+    flex: 0 0 336px;
+    width: 336px;
+    height: 280px;
+    max-width: 336px;
+    border-radius: 0;
+}
+
+.banners-row .banner-336x280:first-child.show-guides {
+    border-right-width: 1.5px;
+}
+
+.banners-row .banner-336x280:last-child.show-guides {
+    border-left-width: 1.5px;
+}
+
+.mockup-banner-area {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Estado de Upload Ativo (Com Guias Visuais) */
+.mockup-banner-area.show-guides {
+    background-color: var(--color-yellow-mockup);
+    border: 3px solid var(--color-accent);
+    box-shadow: 0 4px 15px rgba(226, 6, 19, 0.1);
+}
+
+.banner-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    font-family: var(--font-main);
+    pointer-events: none; /* Deixa passar cliques para o input */
+    padding: 15px;
+    width: 100%;
+}
+
+.banner-size {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
+.banner-label {
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Overlay de Hover para Upload */
+.banner-hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 75, 147, 0.9);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    font-weight: 600;
+    font-size: 13px;
+    z-index: 2;
+}
+
+.mockup-banner-area:hover .banner-hover-overlay {
+    opacity: 1;
+}
+
+/* Input File Escondido, mas cobrindo a área para clique/drag&drop */
+.banner-file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+/* Dimensões Específicas dos Banners */
+.banner-300x600 {
+    width: 300px;
+    height: 600px;
+}
+
+.banner-336x280 {
+    width: 100%;
+    height: 280px;
+}
+
+.banner-818x137 {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 818/137;
+}
+
+/* Quando um Banner contém imagem customizada carregada */
+.mockup-banner-area.has-image {
+    background-color: #ffffff; /* Fundo neutro caso a imagem seja menor */
+}
+
+.mockup-banner-area.has-image .banner-placeholder {
+    display: none;
+}
+
+/* Estado de visualização Limpa (Sem guias de mockup) */
+.site-wrapper.hide-mockup-guides .mockup-banner-area {
+    border: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.site-wrapper.hide-mockup-guides .mockup-banner-area .banner-placeholder {
+    display: none !important;
+}
+
+/* Se não tem imagem e as guias estão desativadas, mostra um bloco vazio cinza sutil */
+.site-wrapper.hide-mockup-guides .mockup-banner-area:not(.has-image) {
+    background-color: #eaeff5 !important;
+    border: 1px dashed #b1c5db !important;
+}
+
+.site-wrapper.hide-mockup-guides .mockup-banner-area:not(.has-image)::after {
+    content: "Espaço do anúncio (" attr(data-banner-id) ")";
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* ==========================================
+   PAINEL DE CONTROLE (MOCKUP MANAGER)
+   ========================================== */
+.mockup-panel {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    width: 320px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+    font-family: var(--font-main);
+}
+
+.mockup-panel.collapsed {
+    transform: translateX(340px);
+}
+
+/* Botão de Toggle do Painel */
+.panel-toggle {
+    position: absolute;
+    left: -50px;
+    top: 20px;
+    width: 44px;
+    height: 44px;
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px 0 0 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s;
+}
+
+.panel-toggle:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.mockup-panel:not(.collapsed) .panel-toggle {
+    border-radius: 12px;
+    left: -60px;
+}
+
+.panel-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.panel-header h2 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 4px;
+}
+
+.panel-header p {
+    font-size: 11px;
+    color: var(--color-text-light);
+}
+
+.panel-content {
+    padding: 20px;
+    max-height: calc(100vh - 240px);
+    overflow-y: auto;
+}
+
+.panel-section {
+    margin-bottom: 25px;
+}
+
+.panel-section h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-light);
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+/* Switch Estilizado */
+.switch-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.switch-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cbd5e1;
+    transition: .3s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+}
+
+input:checked + .slider {
+    background-color: var(--color-primary);
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.slider.round {
+    border-radius: 24px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Lista de Uploaders */
+.banner-uploader-item {
+    margin-bottom: 15px;
+}
+
+.banner-uploader-item label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    margin-bottom: 6px;
+}
+
+.banner-uploader-item input[type="file"] {
+    width: 100%;
+    font-size: 11px;
+    color: var(--color-text-light);
+    border: 1px solid var(--color-border);
+    padding: 6px;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+/* Botões do Painel */
+.panel-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.panel-btn:active {
+    transform: scale(0.98);
+}
+
+.reset-btn {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+}
+
+.reset-btn:hover {
+    background-color: #e2e8f0;
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+.main-footer {
+    background-color: #ffffff;
+    border-top: 1px solid var(--color-border);
+    padding: 30px 0;
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 12px;
+}

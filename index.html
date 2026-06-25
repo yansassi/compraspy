@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup Compras Paraguai - Testador de Banners</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- PAINEL DE CONTROLE FLUTUANTE (MOCKUP MANAGER) -->
+    <div id="mockup-panel" class="mockup-panel collapsed">
+        <button id="panel-toggle" class="panel-toggle" title="Abrir/Fechar Painel de Controle">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+                <path fill="currentColor" d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.04,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+            </svg>
+        </button>
+        <div class="panel-header">
+            <h2>Mockup Manager</h2>
+            <p>Gerencie seus banners e teste a visualização</p>
+        </div>
+        <div class="panel-content">
+            <div class="panel-section">
+                <h3>Visualização</h3>
+                <div class="switch-container">
+                    <span class="switch-label">Mostrar guias amarelas</span>
+                    <label class="switch">
+                        <input type="checkbox" id="toggle-guides" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>Carregar Banners</h3>
+                
+                <div class="banner-uploader-item">
+                    <label>Lateral Esquerda (300x600)</label>
+                    <input type="file" data-banner="lateral-esquerda" accept="image/*">
+                </div>
+                
+                <div class="banner-uploader-item">
+                    <label>Lateral Direita (300x600)</label>
+                    <input type="file" data-banner="lateral-direita" accept="image/*">
+                </div>
+                
+                <div class="banner-uploader-item">
+                    <label>Topo Busca Esquerda (336x280)</label>
+                    <input type="file" data-banner="topo-esquerda" accept="image/*">
+                </div>
+                
+                <div class="banner-uploader-item">
+                    <label>Topo Busca Direita (336x280)</label>
+                    <input type="file" data-banner="topo-direita" accept="image/*">
+                </div>
+                
+                <div class="banner-uploader-item">
+                    <label>Topo Ofertas (818x137)</label>
+                    <input type="file" data-banner="topo-ofertas" accept="image/*">
+                </div>
+                
+                <div class="banner-uploader-item">
+                    <label>Meio Ofertas (818x137)</label>
+                    <input type="file" data-banner="meio-ofertas" accept="image/*">
+                </div>
+            </div>
+
+            <button id="reset-all" class="panel-btn reset-btn">Restaurar Padrão (Limpar Banners)</button>
+        </div>
+    </div>
+
+    <!-- SITE PRINCIPAL (REPLICA COMPRAS PARAGUAI) -->
+    <div id="site-wrapper" class="site-wrapper">
+
+        <!-- Barra Vermelha de Aviso Superior -->
+        <header class="top-announcement-bar">
+            <div class="container-announcement">
+                <span>Lembre-se: o Compras Paraguai não possui loja e nem realiza venda de produtos. Somos um comparador de preços.</span>
+                <button class="btn-entendi">ENTENDI</button>
+            </div>
+        </header>
+
+        <!-- Barra Superior Azul de Navegação Auxiliar -->
+        <div class="top-nav-bar">
+            <div class="container top-nav-flex">
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><span class="icon-social">f</span></a>
+                    <a href="#" aria-label="Instagram"><span class="icon-social">📷</span></a>
+                    <a href="#" aria-label="YouTube"><span class="icon-social">▶</span></a>
+                    <a href="#" aria-label="TikTok"><span class="icon-social">🎵</span></a>
+                    <a href="#" aria-label="Telegram"><span class="icon-social">✈</span></a>
+                    <a href="#" class="top-link">Anuncie Conosco</a>
+                    <a href="#" class="top-link">Cidades do Paraguai ▾</a>
+                    <a href="#" class="top-link">Utilidades ▾</a>
+                </div>
+                <div class="language-selector">
+                    <span class="flag-br">🇧🇷</span> Brasil ▾
+                </div>
+            </div>
+        </div>
+
+        <!-- Header Principal Azul -->
+        <header class="main-header">
+            <div class="container header-flex">
+                <!-- Logotipo Compras Paraguai -->
+                <a href="#" class="logo-container">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main">Compras</span>
+                        <span class="logo-sub">Paraguai</span>
+                    </div>
+                </a>
+
+                <!-- Barra de Busca -->
+                <div class="search-container">
+                    <input type="text" class="search-input" value="xiaomi" placeholder="O que você procura?">
+                    <button class="search-button" aria-label="Buscar">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Ações do Usuário (Entrar / Desejos) -->
+                <div class="user-actions">
+                    <a href="#" class="user-account">
+                        <div class="action-icon">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                        </div>
+                        <div class="action-text">
+                            <span class="action-small">ENTRE OU</span>
+                            <span class="action-bold">CADASTRE-SE</span>
+                        </div>
+                    </a>
+                    <a href="#" class="wishlist">
+                        <div class="action-icon">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </div>
+                        <div class="action-text">
+                            <span class="action-small">LISTA DE DESEJOS</span>
+                            <span class="action-bold">0 PRODUTOS</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Barra de Categorias e Cotação do Dólar -->
+        <nav class="categories-nav">
+            <div class="container nav-flex">
+                <div class="nav-links">
+                    <a href="#" class="menu-categories">
+                        <span class="burger-icon">☰</span> CATEGORIAS
+                    </a>
+                    <a href="#" class="nav-item"><span class="icon-nav">🏪</span> LOJAS</a>
+                    <a href="#" class="nav-item"><span class="icon-nav">🏷️</span> MARCAS</a>
+                    <a href="#" class="nav-item"><span class="icon-nav">✈️</span> TURISMO</a>
+                    <a href="#" class="nav-item"><span class="icon-nav">💸</span> DESCONTOS</a>
+                </div>
+                <div class="dolar-today">
+                    <span class="dolar-label">Dólar hoje:</span>
+                    <span class="dolar-value">R$ 5,27</span>
+                    <span class="dolar-trend-down">▼ 0,38%</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Caminho de Navegação (Breadcrumb) -->
+        <div class="breadcrumb-container">
+            <div class="container">
+                <p class="breadcrumb">Início &rsaquo; <span>xiaomi</span></p>
+            </div>
+        </div>
+
+        <!-- CONTEÚDO PRINCIPAL (GRID 4 COLUNAS) -->
+        <main class="main-content container">
+
+            <!-- COLUNA 1: BANNER LATERAL ESQUERDA -->
+            <aside class="sidebar-left-banner">
+                <!-- Banner Lateral Esquerda 300x600 -->
+                <div class="mockup-banner-area banner-300x600 show-guides" data-banner-id="lateral-esquerda">
+                    <input type="file" class="banner-file-input" accept="image/*">
+                    <div class="banner-placeholder">
+                        <div class="banner-size">300x600</div>
+                        <div class="banner-label">LATERAL BUSCAS DEKSTOP</div>
+                    </div>
+                    <div class="banner-hover-overlay">
+                        <span>Clique ou arraste para carregar (300x600)</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- COLUNA 2: FILTROS E AD LG -->
+            <aside class="sidebar-filters">
+                <!-- Filtros -->
+                <div class="filters-box">
+                    <h3>Filtros</h3>
+                    
+                    <div class="filter-group">
+                        <h4>Lojas</h4>
+                        <div class="filter-options scrollable-options">
+                            <label><input type="checkbox" checked> Shopping China</label>
+                            <label><input type="checkbox"> Visãovip</label>
+                            <label><input type="checkbox"> Cellshop</label>
+                            <label><input type="checkbox"> Mobile Zone</label>
+                            <label><input type="checkbox"> Atacado Connect</label>
+                            <label><input type="checkbox"> Mega Eletrônicos</label>
+                            <label><input type="checkbox"> Pioneer International</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Marcas</h4>
+                        <div class="filter-options scrollable-options">
+                            <label><input type="checkbox" checked> Xiaomi</label>
+                            <label><input type="checkbox"> Toshiba</label>
+                            <label><input type="checkbox"> Google</label>
+                            <label><input type="checkbox"> Realme</label>
+                            <label><input type="checkbox"> Samsung</label>
+                            <label><input type="checkbox"> Apple</label>
+                            <label><input type="checkbox"> LG</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Preço</h4>
+                        <div class="price-inputs">
+                            <input type="text" placeholder="Min" class="price-input" value="Min">
+                            <input type="text" placeholder="Max" class="price-input" value="Max">
+                            <button class="btn-price-ok">Ok</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banner Vertical Fixo (LG Importados) -->
+                <div class="fixed-ad-container">
+                    <img src="assets/banner_lg.png" alt="LG Importados Banner" class="sidebar-ad-img">
+                </div>
+            </aside>
+
+            <!-- COLUNA CENTRAL (CONTEÚDO) -->
+            <section class="content-center">
+                <!-- Barra de Informações de Busca e Ordenação -->
+                <div class="search-results-header">
+                    <h2>XIAOMI <span class="results-count">(2314 Resultados)</span></h2>
+                    <div class="results-controls">
+                        <div class="view-modes">
+                            <button class="btn-view-mode active" title="Modo Lista">☰</button>
+                            <button class="btn-view-mode" title="Modo Grid">☷</button>
+                        </div>
+                        <div class="sort-selector">
+                            <span class="sort-label">Ordenar por:</span>
+                            <select class="sort-select">
+                                <option>Relevância</option>
+                                <option>Menor Preço</option>
+                                <option>Maior Preço</option>
+                                <option>Mais Vendidos</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Espaço Banners Duplos (336x280 cada) -->
+                <div class="banners-row">
+                    <!-- Banner Esquerdo 336x280 -->
+                    <div class="mockup-banner-area banner-336x280 show-guides" data-banner-id="topo-esquerda">
+                        <input type="file" class="banner-file-input" accept="image/*">
+                        <div class="banner-placeholder">
+                            <div class="banner-size">336x280</div>
+                            <div class="banner-label">TOPO BUSCAS ESQUERDA DESKTOP</div>
+                        </div>
+                        <div class="banner-hover-overlay">
+                            <span>Clique ou arraste para carregar (336x280)</span>
+                        </div>
+                    </div>
+
+                    <!-- Banner Direito 336x280 -->
+                    <div class="mockup-banner-area banner-336x280 show-guides" data-banner-id="topo-direita">
+                        <input type="file" class="banner-file-input" accept="image/*">
+                        <div class="banner-placeholder">
+                            <div class="banner-size">336x280</div>
+                            <div class="banner-label">TOPO BUSCAS DIREITA DESKTOP</div>
+                        </div>
+                        <div class="banner-hover-overlay">
+                            <span>Clique ou arraste para carregar (336x280)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sugestões de Categorias -->
+                <div class="suggestions-bar">
+                    <span class="suggestions-title">Sugestões:</span>
+                    <a href="#" class="suggestion-tag text-blue">Celular <span class="tag-count">(209)</span></a>,
+                    <a href="#" class="suggestion-tag text-blue">Carregador Portátil <span class="tag-count">(129)</span></a>,
+                    <a href="#" class="suggestion-tag text-blue">Display <span class="tag-count">(107)</span></a>,
+                    <a href="#" class="suggestion-tag text-blue">Carregador de Tomada <span class="tag-count">(106)</span></a>,
+                    <a href="#" class="suggestion-tag text-blue">Relógio <span class="tag-count">(94)</span></a>
+                    <span class="show-more-suggestions">Mostrar mais [+]</span>
+                </div>
+
+                <!-- Banner Horizontal Ofertas Topo (818x137) -->
+                <div class="mockup-banner-area banner-818x137 show-guides" data-banner-id="topo-ofertas">
+                    <input type="file" class="banner-file-input" accept="image/*">
+                    <div class="banner-placeholder">
+                        <div class="banner-size">818x137</div>
+                        <div class="banner-label">TOPO OFERTAS BUSCAS DESKTOP</div>
+                    </div>
+                    <div class="banner-hover-overlay">
+                        <span>Clique ou arraste para carregar (818x137)</span>
+                    </div>
+                </div>
+
+                <!-- Listagem de Produtos - Perfumes -->
+                <div class="products-list">
+                    
+                    <!-- Produto 1 -->
+                    <div class="product-item">
+                        <div class="product-img-container">
+                            <img src="assets/perfume_sabah.png" alt="Perfume Al Wataniah Sabah Al Ward" class="product-img">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title"><a href="#">Perfume Al Wataniah Sabah Al Ward Eau de Parfum Feminino 100ML</a></h3>
+                            <p class="product-description">Um aroma que desperta o mistério e desejo através de uma fragrância marcante e envolvente...</p>
+                        </div>
+                        <div class="product-pricing">
+                            <div class="price-container">
+                                <span class="price-usd-label">A partir de:</span>
+                                <span class="price-usd">US$ 11,25</span>
+                                <span class="price-brl">R$ 59,29</span>
+                            </div>
+                            <button class="btn-offers">42 OFERTAS</button>
+                        </div>
+                    </div>
+
+                    <!-- Produto 2 -->
+                    <div class="product-item">
+                        <div class="product-img-container">
+                            <img src="assets/perfume_asad.png" alt="Perfume Lattafa Asad Bourbon" class="product-img">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title"><a href="#">Perfume Lattafa Asad Bourbon Eau de Parfum Masculino 100ML</a></h3>
+                            <p class="product-description">O Lattafa Asad Bourbon Eau de Parfum Masculino é uma fragrância poderosa, com notas amadeiradas e especiadas que marcam presença...</p>
+                        </div>
+                        <div class="product-pricing">
+                            <div class="price-container">
+                                <span class="price-usd-label">A partir de:</span>
+                                <span class="price-usd">US$ 22,50</span>
+                                <span class="price-brl">R$ 118,57</span>
+                            </div>
+                            <button class="btn-offers">39 OFERTAS</button>
+                        </div>
+                    </div>
+
+                    <!-- Produto 3 -->
+                    <div class="product-item">
+                        <div class="product-img-container">
+                            <img src="assets/perfume_fakhar.png" alt="Perfume Lattafa Fakhar" class="product-img">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title"><a href="#">Perfume Lattafa Fakhar Eau de Parfum Masculino 100ML</a></h3>
+                            <p class="product-description">Fragrância oriental fresca com tons florais e de sândalo. Perfeito para homens modernos que apreciam elegância e frescor duradouro...</p>
+                        </div>
+                        <div class="product-pricing">
+                            <div class="price-container">
+                                <span class="price-usd-label">A partir de:</span>
+                                <span class="price-usd">US$ 18,99</span>
+                                <span class="price-brl">R$ 100,08</span>
+                            </div>
+                            <button class="btn-offers">44 OFERTAS</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Banner Horizontal Meio (818x137) -->
+                <div class="mockup-banner-area banner-818x137 show-guides" data-banner-id="meio-ofertas">
+                    <input type="file" class="banner-file-input" accept="image/*">
+                    <div class="banner-placeholder">
+                        <div class="banner-size">818x137</div>
+                        <div class="banner-label">MEIO BUSCAS DESKTOP</div>
+                    </div>
+                    <div class="banner-hover-overlay">
+                        <span>Clique ou arraste para carregar (818x137)</span>
+                    </div>
+                </div>
+
+                <!-- Mais Produtos abaixo do Banner de Meio para Simulação Completa -->
+                <div class="products-list">
+                    <!-- Produto 4 (Repetição para simular fluxo) -->
+                    <div class="product-item">
+                        <div class="product-img-container">
+                            <img src="assets/perfume_sabah.png" alt="Perfume Al Wataniah Sabah Al Ward" class="product-img">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title"><a href="#">Perfume Al Wataniah Sabah Al Ward Eau de Parfum Feminino 100ML</a></h3>
+                            <p class="product-description">Um aroma que desperta o mistério e desejo através de uma fragrância marcante e envolvente...</p>
+                        </div>
+                        <div class="product-pricing">
+                            <div class="price-container">
+                                <span class="price-usd-label">A partir de:</span>
+                                <span class="price-usd">US$ 11,25</span>
+                                <span class="price-brl">R$ 59,29</span>
+                            </div>
+                            <button class="btn-offers">42 OFERTAS</button>
+                        </div>
+                    </div>
+
+                    <!-- Produto 5 (Repetição para simular fluxo) -->
+                    <div class="product-item">
+                        <div class="product-img-container">
+                            <img src="assets/perfume_asad.png" alt="Perfume Lattafa Asad Bourbon" class="product-img">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title"><a href="#">Perfume Lattafa Asad Bourbon Eau de Parfum Masculino 100ML</a></h3>
+                            <p class="product-description">O Lattafa Asad Bourbon Eau de Parfum Masculino é uma fragrância poderosa, com notas amadeiradas e especiadas que marcam presença...</p>
+                        </div>
+                        <div class="product-pricing">
+                            <div class="price-container">
+                                <span class="price-usd-label">A partir de:</span>
+                                <span class="price-usd">US$ 22,50</span>
+                                <span class="price-brl">R$ 118,57</span>
+                            </div>
+                            <button class="btn-offers">39 OFERTAS</button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- COLUNA DIREITA -->
+            <aside class="sidebar-right">
+                <!-- Banner Lateral Direita 300x600 -->
+                <div class="mockup-banner-area banner-300x600 show-guides" data-banner-id="lateral-direita">
+                    <input type="file" class="banner-file-input" accept="image/*">
+                    <div class="banner-placeholder">
+                        <div class="banner-size">300x600</div>
+                        <div class="banner-label">LATERAL BUSCAS DEKSTOP</div>
+                    </div>
+                    <div class="banner-hover-overlay">
+                        <span>Clique ou arraste para carregar (300x600)</span>
+                    </div>
+                </div>
+            </aside>
+
+        </main>
+
+        <!-- Rodapé do Site -->
+        <footer class="main-footer">
+            <div class="container footer-content">
+                <p>&copy; 2026 Compras Paraguai Mockup - Desenvolvido para fins de simulação de design de anúncios.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
