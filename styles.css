@@ -1668,3 +1668,53 @@ input:checked + .slider:before {
     background-color: #e11d48;
 }
 
+/* =========================================
+   Botões compactos da tabela de mockups
+   ========================================= */
+.table-btn,
+.table-btn-view,
+.table-btn-danger {
+    display: inline-block;
+    padding: 5px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: var(--font-main);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.15s, transform 0.1s;
+    margin-right: 4px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.table-btn-view {
+    background-color: #10b981;
+    color: #ffffff;
+}
+
+.table-btn-view:hover {
+    background-color: #059669;
+    transform: translateY(-1px);
+}
+
+.table-btn {
+    background-color: #e2e8f0;
+    color: #334155;
+}
+
+.table-btn:hover {
+    background-color: #cbd5e1;
+    transform: translateY(-1px);
+}
+
+.table-btn-danger {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.table-btn-danger:hover {
+    background-color: #fecaca;
+    transform: translateY(-1px);
+}
