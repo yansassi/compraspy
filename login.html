@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Administrador de Mockups</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+    <div class="login-wrapper">
+        <div class="login-box">
+            <div class="login-header">
+                <div class="logo-container logo-dark">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main">Mockup</span>
+                        <span class="logo-sub">Manager Admin</span>
+                    </div>
+                </div>
+                <p>Acesse o painel para gerenciar os banners dinâmicos</p>
+            </div>
+
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="email">E-mail ou Usuário</label>
+                    <input type="text" id="email" required placeholder="admin@compraspy.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" id="btn-login" class="login-btn">Entrar no Painel</button>
+            </form>
+            
+            <div class="login-footer">
+                <a href="index.html" class="back-link">&larr; Voltar para o Site</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('login-form');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const btnLogin = document.getElementById('btn-login');
+
+            // Verifica se já está logado
+            const token = localStorage.getItem('pocketbase_auth_token');
+            if (token) {
+                window.location.href = 'admin.html';
+            }
+
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                btnLogin.disabled = true;
+                btnLogin.textContent = 'Autenticando...';
+
+                const identity = emailInput.value;
+                const password = passwordInput.value;
+
+                try {
+                    const response = await fetch(`${POCKETBASE_URL}/api/collections/users/auth-with-password`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ identity, password })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        // Salva dados de autenticação no localStorage
+                        localStorage.setItem('pocketbase_auth_token', data.token);
+                        localStorage.setItem('pocketbase_auth_user', JSON.stringify(data.record));
+                        
+                        window.location.href = 'admin.html';
+                    } else {
+                        alert('Erro de login: ' + (data.message || 'Credenciais inválidas'));
+                        btnLogin.disabled = false;
+                        btnLogin.textContent = 'Entrar no Painel';
+                    }
+                } catch (error) {
+                    console.error('Erro de requisição:', error);
+                    alert('Erro ao conectar com o PocketBase. Verifique se o servidor está online em: ' + POCKETBASE_URL);
+                    btnLogin.disabled = false;
+                    btnLogin.textContent = 'Entrar no Painel';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

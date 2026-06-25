@@ -17,36 +17,93 @@ document.addEventListener('DOMContentLoaded', () => {
         'meio-ofertas'
     ];
 
+    // Mapeamento de IDs do DOM para as chaves do PocketBase
+    const pocketbaseMapping = {
+        'lateral-esquerda': 'banner_lateral_esq',
+        'lateral-direita': 'banner_lateral_dir',
+        'topo-esquerda': 'banner_topo_esq',
+        'topo-direita': 'banner_topo_dir',
+        'topo-ofertas': 'banner_topo_ofertas',
+        'meio-ofertas': 'banner_meio_ofertas'
+    };
+
     // ==========================================
-    // 1. GERENCIAMENTO DO PAINEL DE CONTROLE
+    // 1. GERENCIAMENTO DE BUSCA VIA URL
+    // ==========================================
+
+    const urlParams = new URLSearchParams(window.location.search);
+    let activeSearchTerm = urlParams.get('busca') || 'xiaomi';
+    activeSearchTerm = activeSearchTerm.trim().toLowerCase();
+
+    // Sincroniza o input e o título da busca na tela com o termo ativo
+    const searchInput = document.querySelector('.search-input');
+    const searchButton = document.querySelector('.search-button');
+    const searchResultsTitle = document.querySelector('.search-results-header h2');
+
+    if (searchInput) {
+        searchInput.value = activeSearchTerm;
+    }
+    
+    if (searchResultsTitle) {
+        searchResultsTitle.innerHTML = `${activeSearchTerm.toUpperCase()} <span class="results-count">(2314 Resultados)</span>`;
+    }
+
+    // Executa a busca recarregando a página com o parâmetro
+    function handleSearchSubmit() {
+        if (searchInput) {
+            const term = searchInput.value.trim().toLowerCase();
+            if (term) {
+                window.location.href = `index.html?busca=${encodeURIComponent(term)}`;
+            }
+        }
+    }
+
+    if (searchButton) {
+        searchButton.addEventListener('click', handleSearchSubmit);
+    }
+    
+    if (searchInput) {
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleSearchSubmit();
+            }
+        });
+    }
+
+    // ==========================================
+    // 2. GERENCIAMENTO DO PAINEL DE CONTROLE
     // ==========================================
 
     // Abrir/Fechar painel ao clicar na engrenagem
-    panelToggle.addEventListener('click', () => {
-        mockupPanel.classList.toggle('collapsed');
-    });
+    if (panelToggle && mockupPanel) {
+        panelToggle.addEventListener('click', () => {
+            mockupPanel.classList.toggle('collapsed');
+        });
+    }
 
     // Fechar painel se o usuário clicar fora dele em telas menores
     document.addEventListener('click', (e) => {
-        if (!mockupPanel.contains(e.target) && !panelToggle.contains(e.target) && !mockupPanel.classList.contains('collapsed')) {
+        if (mockupPanel && panelToggle && !mockupPanel.contains(e.target) && !panelToggle.contains(e.target) && !mockupPanel.classList.contains('collapsed')) {
             mockupPanel.classList.add('collapsed');
         }
     });
 
     // Alternar guias de mockup (amarelo e bordas vermelhas)
-    toggleGuidesCheckbox.addEventListener('change', () => {
-        if (toggleGuidesCheckbox.checked) {
-            siteWrapper.classList.remove('hide-mockup-guides');
-        } else {
-            siteWrapper.classList.add('hide-mockup-guides');
-        }
-        // Salvar preferência de guias do usuário
-        localStorage.setItem('mockup-show-guides', toggleGuidesCheckbox.checked);
-    });
+    if (toggleGuidesCheckbox && siteWrapper) {
+        toggleGuidesCheckbox.addEventListener('change', () => {
+            if (toggleGuidesCheckbox.checked) {
+                siteWrapper.classList.remove('hide-mockup-guides');
+            } else {
+                siteWrapper.classList.add('hide-mockup-guides');
+            }
+            // Salvar preferência de guias do usuário
+            localStorage.setItem('mockup-show-guides', toggleGuidesCheckbox.checked);
+        });
+    }
 
     // Carregar preferência inicial de guias
     const savedGuidesPref = localStorage.getItem('mockup-show-guides');
-    if (savedGuidesPref !== null) {
+    if (savedGuidesPref !== null && toggleGuidesCheckbox && siteWrapper) {
         const showGuides = savedGuidesPref === 'true';
         toggleGuidesCheckbox.checked = showGuides;
         if (showGuides) {
@@ -57,24 +114,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 2. LÓGICA DE UPLOAD E LEITURA DE IMAGENS
+    // 3. LÓGICA DE EXIBIÇÃO E REMOÇÃO DE BANNERS
     // ==========================================
 
     // Função para aplicar a imagem no banner correspondente
-    function applyBannerImage(bannerId, dataUrl) {
+    function applyBannerImage(bannerId, url, saveToLocal = false) {
         const bannerArea = document.querySelector(`.mockup-banner-area[data-banner-id="${bannerId}"]`);
         if (bannerArea) {
-            bannerArea.style.backgroundImage = `url('${dataUrl}')`;
+            bannerArea.style.backgroundImage = `url('${url}')`;
             bannerArea.classList.add('has-image');
             
-            // Opcional: Adiciona um botão de remoção rápida na própria área
+            // Adiciona botão de remoção rápida na própria área
             let removeBtn = bannerArea.querySelector('.quick-remove-btn');
             if (!removeBtn) {
                 removeBtn = document.createElement('button');
                 removeBtn.className = 'quick-remove-btn';
                 removeBtn.innerHTML = '&times;';
                 removeBtn.title = 'Remover esta imagem';
-                // Impedir que o clique no botão abra o seletor de arquivos
                 removeBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     e.preventDefault();
@@ -83,19 +139,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 bannerArea.appendChild(removeBtn);
             }
         }
+
+        if (saveToLocal) {
+            try {
+                localStorage.setItem(`mockup-banner-${bannerId}`, url);
+            } catch (error) {
+                console.warn('Erro ao salvar no localStorage:', error);
+            }
+        }
     }
 
-    // Função para limpar apenas um banner
-    function clearSingleBanner(bannerId) {
+    // Limpa apenas o visual de um banner
+    function clearSingleBannerVisual(bannerId) {
         const bannerArea = document.querySelector(`.mockup-banner-area[data-banner-id="${bannerId}"]`);
         if (bannerArea) {
             bannerArea.style.backgroundImage = '';
             bannerArea.classList.remove('has-image');
             
-            // Remove botão de remoção rápida se existir
             const removeBtn = bannerArea.querySelector('.quick-remove-btn');
             if (removeBtn) removeBtn.remove();
         }
+    }
+
+    // Limpa e reseta um banner completo (visual + armazenamento local)
+    function clearSingleBanner(bannerId) {
+        clearSingleBannerVisual(bannerId);
 
         // Limpa no localStorage
         localStorage.removeItem(`mockup-banner-${bannerId}`);
@@ -107,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (panelInput) panelInput.value = '';
     }
 
-    // Processar arquivo de imagem selecionado e salvar
+    // Processar arquivo de imagem selecionado localmente e salvar no cache local
     function handleFileSelect(file, bannerId) {
         if (!file || !file.type.match('image.*')) {
             alert('Por favor, selecione apenas arquivos de imagem.');
@@ -118,27 +186,18 @@ document.addEventListener('DOMContentLoaded', () => {
         reader.onload = (e) => {
             const dataUrl = e.target.result;
             
-            // Aplicar no DOM
-            applyBannerImage(bannerId, dataUrl);
-            
-            // Salvar no localStorage para persistência
-            try {
-                localStorage.setItem(`mockup-banner-${bannerId}`, dataUrl);
-            } catch (error) {
-                console.warn('Erro ao salvar no localStorage. A imagem pode ser muito grande:', error);
-                alert('Aviso: A imagem é muito grande para ser persistida entre recarregamentos, mas continuará visível nesta sessão.');
-            }
+            // Aplicar no DOM e salvar no localStorage localmente
+            applyBannerImage(bannerId, dataUrl, true);
         };
         reader.readAsDataURL(file);
     }
 
-    // Configurar escutas de eventos para as áreas do site e inputs do painel
+    // Configurar escutas de eventos locais para upload rápido (caso o usuário teste na página pública)
     bannerIds.forEach(bannerId => {
         const bannerArea = document.querySelector(`.mockup-banner-area[data-banner-id="${bannerId}"]`);
         const siteInput = bannerArea ? bannerArea.querySelector('.banner-file-input') : null;
         const panelInput = document.querySelector(`input[data-banner="${bannerId}"]`);
 
-        // Sincronizar input do site direto
         if (siteInput) {
             siteInput.addEventListener('change', (e) => {
                 if (e.target.files && e.target.files[0]) {
@@ -147,63 +206,112 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Sincronizar input do painel lateral
         if (panelInput) {
             panelInput.addEventListener('change', (e) => {
                 if (e.target.files && e.target.files[0]) {
                     handleFileSelect(e.target.files[0], bannerId);
-                    
-                    // Sincroniza também o input no site para consistência
                     if (siteInput) {
-                        // Criar uma cópia dos arquivos no input do site
                         siteInput.files = e.target.files;
                     }
                 }
             });
         }
 
-        // ==========================================
-        // 3. EFEITOS DE DRAG & DROP
-        // ==========================================
+        // Eventos de Drag & Drop para o efeito visual de arrastar imagem
         if (bannerArea && siteInput) {
-            // Quando arrasta um arquivo sobre a área do banner
             ['dragenter', 'dragover'].forEach(eventName => {
                 siteInput.addEventListener(eventName, () => {
                     bannerArea.classList.add('dragover');
                 }, false);
             });
 
-            // Quando sai com o arquivo arrastado
             ['dragleave', 'drop'].forEach(eventName => {
                 siteInput.addEventListener(eventName, () => {
                     bannerArea.classList.remove('dragover');
                 }, false);
             });
         }
-
-        // ==========================================
-        // 4. CARREGAR IMAGENS SALVAS NO INÍCIO
-        // ==========================================
-        const savedImage = localStorage.getItem(`mockup-banner-${bannerId}`);
-        if (savedImage) {
-            applyBannerImage(bannerId, savedImage);
-        }
     });
 
+    // Limpar e resetar todos os banners locais
+    if (resetAllBtn) {
+        resetAllBtn.addEventListener('click', () => {
+            if (confirm('Tem certeza de que deseja remover todos os seus banners locais e restaurar os padrões?')) {
+                bannerIds.forEach(bannerId => {
+                    clearSingleBanner(bannerId);
+                });
+                if (mockupPanel) {
+                    mockupPanel.classList.remove('collapsed');
+                }
+            }
+        });
+    }
+
     // ==========================================
-    // 5. LIMPAR E RESETAR TUDO
+    // 4. INTEGRAÇÃO E CARREGAMENTO DO POCKETBASE
     // ==========================================
-    resetAllBtn.addEventListener('click', () => {
-        if (confirm('Tem certeza de que deseja remover todos os seus banners customizados?')) {
+
+    async function loadMockupsFromPocketBase(searchTerm) {
+        if (typeof POCKETBASE_URL === 'undefined') {
+            console.warn('Constante POCKETBASE_URL não está definida. Verifique o arquivo config.js.');
+            return false;
+        }
+
+        try {
+            // Consulta no PocketBase procurando o termo de busca exato na coleção mockups
+            const response = await fetch(`${POCKETBASE_URL}/api/collections/mockups/records?filter=(search_term='${encodeURIComponent(searchTerm)}')`);
+            const data = await response.json();
+
+            if (response.ok && data.items && data.items.length > 0) {
+                const record = data.items[0];
+                
+                // Limpa visualmente primeiro
+                bannerIds.forEach(bannerId => clearSingleBannerVisual(bannerId));
+
+                // Aplica os arquivos salvos no PocketBase
+                bannerIds.forEach(bannerId => {
+                    const pbKey = pocketbaseMapping[bannerId];
+                    if (record[pbKey]) {
+                        const fileUrl = `${POCKETBASE_URL}/api/files/${record.collectionId}/${record.id}/${record[pbKey]}`;
+                        applyBannerImage(bannerId, fileUrl, false); // false = não salva no localStorage local
+                    }
+                });
+                
+                console.log(`Mockups carregados com sucesso do PocketBase para a palavra: "${searchTerm}"`);
+                return true;
+            }
+        } catch (error) {
+            console.error('Falha ao conectar com PocketBase para busca dinâmica:', error);
+        }
+        return false;
+    }
+
+    // Função Inicializadora de Carregamento
+    async function initBanners() {
+        // Tenta buscar no PocketBase pela palavra-chave ativa da busca
+        const loadedFromDB = await loadMockupsFromPocketBase(activeSearchTerm);
+
+        // Se não encontrar no PocketBase, carrega as imagens do localStorage local como fallback de testes
+        if (!loadedFromDB) {
+            console.log(`Termo "${activeSearchTerm}" não cadastrado no PocketBase. Usando banners salvos localmente.`);
             bannerIds.forEach(bannerId => {
-                clearSingleBanner(bannerId);
+                const savedImage = localStorage.getItem(`mockup-banner-${bannerId}`);
+                if (savedImage) {
+                    applyBannerImage(bannerId, savedImage, false);
+                } else {
+                    clearSingleBannerVisual(bannerId);
+                }
             });
-            // Opcional: Reabre o painel para o usuário ver
-            mockupPanel.classList.remove('collapsed');
         }
-    });
+    }
 
-    // Adicionar estilos CSS adicionais para o botão de remoção rápida dinamicamente
+    // Executa inicialização
+    initBanners();
+
+    // ==========================================
+    // 5. ESTILOS EXTRAS E EFEITOS
+    // ==========================================
+
     const extraStyles = document.createElement('style');
     extraStyles.innerHTML = `
         .quick-remove-btn {
@@ -235,7 +343,6 @@ document.addEventListener('DOMContentLoaded', () => {
             border: 3px dashed var(--color-primary) !important;
             background-color: rgba(0, 75, 147, 0.1) !important;
         }
-        /* Garantir que o anúncio fixo tenha estilo se necessário */
         .fixed-ad-container {
             margin-top: 10px;
             border: 1px solid var(--color-border);
@@ -245,14 +352,10 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.head.appendChild(extraStyles);
     
-    // Animação inicial: Mostrar o painel por 2 segundos e depois recolhê-lo para indicar a existência do recurso
+    // Animação inicial
     setTimeout(() => {
-        mockupPanel.classList.remove('collapsed');
-        setTimeout(() => {
-            // Só recolhe se o usuário ainda não tiver clicado ou interagido nele
-            if (mockupPanel.classList.contains('collapsed') === false) {
-                // mockupPanel.classList.add('collapsed'); // Opcional: pode iniciar aberto ou fechar após tempo
-            }
-        }, 3000);
+        if (mockupPanel) {
+            mockupPanel.classList.remove('collapsed');
+        }
     }, 500);
 });

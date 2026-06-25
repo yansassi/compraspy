@@ -1164,3 +1164,507 @@ input:checked + .slider:before {
     color: var(--color-text-light);
     font-size: 12px;
 }
+
+/* ==========================================
+   TELA DE LOGIN DO ADMINISTRADOR
+   ========================================== */
+.admin-body {
+    background-color: #f1f5f9;
+    min-height: 100vh;
+    font-family: var(--font-main);
+    color: #1e293b;
+}
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-box {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    padding: 40px;
+    width: 100%;
+    max-width: 440px;
+    border: 1px solid #e2e8f0;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header p {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 10px;
+}
+
+.logo-dark .logo-icon {
+    background-color: var(--color-primary);
+}
+
+.logo-dark .logo-main {
+    color: var(--color-primary);
+}
+
+.logo-dark .logo-sub {
+    color: #64748b;
+}
+
+.login-form .form-group {
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: var(--font-main);
+    font-size: 14px;
+    color: #1e293b;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.login-form input:focus {
+    border-color: var(--color-primary);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    transition: background-color 0.2s;
+}
+
+.login-btn:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.login-btn:disabled {
+    background-color: #94a3b8;
+    cursor: not-allowed;
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.back-link {
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.back-link:hover {
+    color: var(--color-primary);
+}
+
+/* ==========================================
+   PAINEL ADMINISTRATIVO (LAYOUT PRINCIPAL)
+   ========================================== */
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar do Admin */
+.admin-sidebar {
+    width: 260px;
+    background-color: #0f172a;
+    color: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    flex-shrink: 0;
+    border-right: 1px solid #1e293b;
+}
+
+.admin-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.admin-user-info {
+    padding: 12px 16px;
+    background-color: #1e293b;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.user-welcome {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-bottom: 2px;
+}
+
+#admin-username {
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.logout-btn-link {
+    background: none;
+    border: none;
+    color: #f43f5e;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 6px;
+    font-family: var(--font-main);
+}
+
+.logout-btn-link:hover {
+    text-decoration: underline;
+}
+
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    color: #94a3b8;
+    border-radius: 8px;
+    font-family: var(--font-main);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.admin-nav-item:hover, .admin-nav-item.active {
+    background-color: #1e293b;
+    color: #ffffff;
+}
+
+.view-site-item {
+    margin-top: 30px;
+    border: 1px dashed #334155;
+}
+
+.view-site-item:hover {
+    border-color: #475569;
+}
+
+/* Área de Conteúdo */
+.admin-main {
+    flex: 1;
+    min-width: 0;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.admin-header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+}
+
+.admin-header p {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+.admin-content-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    padding: 30px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.admin-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.section-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.mockups-count {
+    background-color: #f1f5f9;
+    color: #475569;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Tabela de Mockups */
+.table-container {
+    overflow-x: auto;
+}
+
+.mockups-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.mockups-table th, .mockups-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 13px;
+}
+
+.mockups-table th {
+    font-weight: 700;
+    color: #475569;
+    background-color: #f8fafc;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.badge-success {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+.badge-warning {
+    background-color: #fef9c3;
+    color: #a16207;
+}
+
+.actions-col {
+    text-align: right;
+    width: 200px;
+}
+
+.table-btn, .table-btn-danger {
+    padding: 6px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-main);
+    transition: all 0.15s;
+    background-color: #ffffff;
+    color: #475569;
+}
+
+.table-btn:hover {
+    background-color: #f1f5f9;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.table-btn-danger {
+    margin-left: 6px;
+}
+
+.table-btn-danger:hover {
+    background-color: #ffe4e6;
+    color: #e11d48;
+    border-color: #f43f5e;
+}
+
+/* Formulário Administrativo */
+.mockup-admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group-full {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group-full label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #334155;
+}
+
+.input-styled {
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: var(--font-main);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+}
+
+.input-styled:focus {
+    border-color: var(--color-primary);
+}
+
+.form-helper {
+    font-size: 11px;
+    color: #64748b;
+}
+
+.form-grid-banners {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.banner-form-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    background-color: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.banner-form-card h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #334155;
+}
+
+.banner-preview {
+    height: 160px;
+    background-color: #e2e8f0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #94a3b8;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px dashed #cbd5e1;
+}
+
+.preview-wide {
+    height: 90px;
+}
+
+.banner-form-wide {
+    grid-column: 1 / -1;
+}
+
+.file-styled {
+    font-size: 12px;
+    color: #475569;
+    font-family: var(--font-main);
+}
+
+/* Botões do Formulário */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 25px;
+    margin-top: 15px;
+}
+
+.btn-primary, .btn-secondary, .btn-danger {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    transition: background-color 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.btn-primary:disabled {
+    background-color: #94a3b8;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+}
+
+.btn-secondary:hover {
+    background-color: #e2e8f0;
+}
+
+.btn-danger {
+    background-color: #f43f5e;
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background-color: #e11d48;
+}
+

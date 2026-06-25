@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Mockup Compras Paraguai</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+    <div class="admin-wrapper">
+        <!-- Sidebar do Admin -->
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">Mockup</span>
+                    <span class="logo-sub">Manager</span>
+                </div>
+            </div>
+            
+            <div class="admin-user-info">
+                <p class="user-welcome">Olá, <span id="admin-username">Administrador</span></p>
+                <button id="btn-logout" class="logout-btn-link">Sair do Painel</button>
+            </div>
+
+            <nav class="admin-nav">
+                <button class="admin-nav-item active" id="nav-list">
+                    <span class="icon-nav">📋</span> Lista de Mockups
+                </button>
+                <button class="admin-nav-item" id="nav-new-mockup">
+                    <span class="icon-nav">➕</span> Novo Mockup
+                </button>
+                <a href="index.html" class="admin-nav-item view-site-item">
+                    <span class="icon-nav">👁️</span> Ver Site Mockup
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Área de Conteúdo Principal -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1 id="page-title">Gerenciador de Mockups</h1>
+                <p id="page-subtitle">Crie e configure os banners dinâmicos do site parceiro</p>
+            </header>
+
+            <div class="admin-content-card">
+                
+                <!-- SEÇÃO 1: LISTAGEM DE MOCKUPS -->
+                <section id="section-list" class="admin-section">
+                    <div class="section-header">
+                        <h2>Mockups Cadastrados</h2>
+                        <span class="mockups-count" id="mockups-count">Carregando...</span>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="mockups-table">
+                            <thead>
+                                <tr>
+                                    <th>Palavra de Busca</th>
+                                    <th>Banners Configurados</th>
+                                    <th>Criado em</th>
+                                    <th class="actions-col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="mockups-list-body">
+                                <tr>
+                                    <td colspan="4" class="text-center py-4">Buscando registros no banco de dados...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- SEÇÃO 2: FORMULÁRIO DE CADASTRO/EDIÇÃO -->
+                <section id="section-form" class="admin-section hidden">
+                    <div class="section-header">
+                        <h2 id="form-section-title">Cadastrar Novo Mockup</h2>
+                        <button class="btn-secondary" id="btn-cancel">Cancelar</button>
+                    </div>
+
+                    <form id="mockup-form" class="mockup-admin-form">
+                        <input type="hidden" id="mockup-id">
+
+                        <div class="form-group-full">
+                            <label for="search_term">Palavra-chave de Busca (ex: xiaomi, iphone, perfume)</label>
+                            <input type="text" id="search_term" required placeholder="Digite a palavra de busca exata..." class="input-styled">
+                            <p class="form-helper">Quando o visitante buscar por esse termo exato, os banners correspondentes serão exibidos.</p>
+                        </div>
+
+                        <div class="form-grid-banners">
+                            
+                            <!-- Banner 1: Lateral Esquerda -->
+                            <div class="banner-form-card">
+                                <h4>Lateral Esquerda (300x600)</h4>
+                                <div class="banner-preview" id="preview-lateral-esq">Sem imagem</div>
+                                <input type="file" id="file-lateral-esq" accept="image/*" class="file-styled">
+                            </div>
+
+                            <!-- Banner 2: Lateral Direita -->
+                            <div class="banner-form-card">
+                                <h4>Lateral Direita (300x600)</h4>
+                                <div class="banner-preview" id="preview-lateral-dir">Sem imagem</div>
+                                <input type="file" id="file-lateral-dir" accept="image/*" class="file-styled">
+                            </div>
+
+                            <!-- Banner 3: Topo Busca Esquerda -->
+                            <div class="banner-form-card">
+                                <h4>Topo Esquerda (336x280)</h4>
+                                <div class="banner-preview" id="preview-topo-esq">Sem imagem</div>
+                                <input type="file" id="file-topo-esq" accept="image/*" class="file-styled">
+                            </div>
+
+                            <!-- Banner 4: Topo Busca Direita -->
+                            <div class="banner-form-card">
+                                <h4>Topo Direita (336x280)</h4>
+                                <div class="banner-preview" id="preview-topo-dir">Sem imagem</div>
+                                <input type="file" id="file-topo-dir" accept="image/*" class="file-styled">
+                            </div>
+
+                            <!-- Banner 5: Topo Ofertas -->
+                            <div class="banner-form-card banner-form-wide">
+                                <h4>Topo Ofertas (818x137)</h4>
+                                <div class="banner-preview preview-wide" id="preview-topo-ofertas">Sem imagem</div>
+                                <input type="file" id="file-topo-ofertas" accept="image/*" class="file-styled">
+                            </div>
+
+                            <!-- Banner 6: Meio Ofertas -->
+                            <div class="banner-form-card banner-form-wide">
+                                <h4>Meio Ofertas (818x137)</h4>
+                                <div class="banner-preview preview-wide" id="preview-meio-ofertas">Sem imagem</div>
+                                <input type="file" id="file-meio-ofertas" accept="image/*" class="file-styled">
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-danger hidden" id="btn-delete">Excluir Mockup</button>
+                            <button type="submit" class="btn-primary" id="btn-submit">Salvar Mockup</button>
+                        </div>
+                    </form>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Elementos de Navegação e Seções
+            const navList = document.getElementById('nav-list');
+            const navNewMockup = document.getElementById('nav-new-mockup');
+            const sectionList = document.getElementById('section-list');
+            const sectionForm = document.getElementById('section-form');
+            const pageTitle = document.getElementById('page-title');
+            const pageSubtitle = document.getElementById('page-subtitle');
+            const adminUsername = document.getElementById('admin-username');
+            const btnLogout = document.getElementById('btn-logout');
+
+            // Formulário e Inputs
+            const mockupForm = document.getElementById('mockup-form');
+            const mockupIdInput = document.getElementById('mockup-id');
+            const searchTermInput = document.getElementById('search_term');
+            const btnCancel = document.getElementById('btn-cancel');
+            const btnDelete = document.getElementById('btn-delete');
+            const btnSubmit = document.getElementById('btn-submit');
+            const formSectionTitle = document.getElementById('form-section-title');
+
+            // Inputs de Arquivos
+            const files = {
+                banner_lateral_esq: document.getElementById('file-lateral-esq'),
+                banner_lateral_dir: document.getElementById('file-lateral-dir'),
+                banner_topo_esq: document.getElementById('file-topo-esq'),
+                banner_topo_dir: document.getElementById('file-topo-dir'),
+                banner_topo_ofertas: document.getElementById('file-topo-ofertas'),
+                banner_meio_ofertas: document.getElementById('file-meio-ofertas')
+            };
+
+            // Previews das Imagens
+            const previews = {
+                banner_lateral_esq: document.getElementById('preview-lateral-esq'),
+                banner_lateral_dir: document.getElementById('preview-lateral-dir'),
+                banner_topo_esq: document.getElementById('preview-topo-esq'),
+                banner_topo_dir: document.getElementById('preview-topo-dir'),
+                banner_topo_ofertas: document.getElementById('preview-topo-ofertas'),
+                banner_meio_ofertas: document.getElementById('preview-meio-ofertas')
+            };
+
+            // Armazenamento em memória dos mockups listados
+            let mockupsList = [];
+
+            // ==========================================
+            // 1. SEGURANÇA E AUTENTICAÇÃO
+            // ==========================================
+
+            const token = localStorage.getItem('pocketbase_auth_token');
+            const userStr = localStorage.getItem('pocketbase_auth_user');
+
+            if (!token || !userStr) {
+                // Redireciona para o login se não houver dados de autenticação
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const user = JSON.parse(userStr);
+            adminUsername.textContent = user.username || user.email || 'Administrador';
+
+            btnLogout.addEventListener('click', () => {
+                localStorage.removeItem('pocketbase_auth_token');
+                localStorage.removeItem('pocketbase_auth_user');
+                window.location.href = 'login.html';
+            });
+
+            // ==========================================
+            // 2. NAVEGAÇÃO ENTRE TELAS
+            // ==========================================
+
+            function showListScreen() {
+                navList.classList.add('active');
+                navNewMockup.classList.remove('active');
+                sectionList.classList.remove('hidden');
+                sectionForm.classList.add('hidden');
+                pageTitle.textContent = 'Gerenciador de Mockups';
+                pageSubtitle.textContent = 'Crie e configure os banners dinâmicos do site parceiro';
+                loadMockups();
+            }
+
+            function showFormScreen(isEdit = false) {
+                navList.classList.remove('active');
+                navNewMockup.classList.add('active');
+                sectionList.classList.add('hidden');
+                sectionForm.classList.remove('hidden');
+                
+                if (isEdit) {
+                    formSectionTitle.textContent = 'Editar Mockup';
+                    btnDelete.classList.remove('hidden');
+                    btnSubmit.textContent = 'Atualizar Mockup';
+                } else {
+                    formSectionTitle.textContent = 'Cadastrar Novo Mockup';
+                    btnDelete.classList.add('hidden');
+                    btnSubmit.textContent = 'Salvar Mockup';
+                    resetForm();
+                }
+            }
+
+            navList.addEventListener('click', showListScreen);
+            navNewMockup.addEventListener('click', () => showFormScreen(false));
+            btnCancel.addEventListener('click', showListScreen);
+
+            // ==========================================
+            // 3. LEITURA E RENDERIZAÇÃO DA TABELA
+            // ==========================================
+
+            async function loadMockups() {
+                try {
+                    const response = await fetch(`${POCKETBASE_URL}/api/collections/mockups/records?sort=-created`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        mockupsList = data.items;
+                        renderTable(mockupsList);
+                        document.getElementById('mockups-count').textContent = `${mockupsList.length} cadastrados`;
+                    } else {
+                        if (response.status === 401) {
+                            // Token expirado ou inválido
+                            btnLogout.click();
+                        }
+                        alert('Erro ao carregar mockups: ' + (data.message || 'Erro desconhecido'));
+                    }
+                } catch (error) {
+                    console.error('Erro de requisição:', error);
+                    document.getElementById('mockups-list-body').innerHTML = `
+                        <tr>
+                            <td colspan="4" class="text-center text-danger py-4">
+                                Erro ao conectar com o PocketBase. Verifique se o servidor está ativo.
+                            </td>
+                        </tr>
+                    `;
+                }
+            }
+
+            function renderTable(items) {
+                const body = document.getElementById('mockups-list-body');
+                if (items.length === 0) {
+                    body.innerHTML = `
+                        <tr>
+                            <td colspan="4" class="text-center py-4">Nenhum mockup cadastrado. Clique em "Novo Mockup" para começar!</td>
+                        </tr>
+                    `;
+                    return;
+                }
+
+                body.innerHTML = items.map(item => {
+                    // Contar quantos banners estão preenchidos
+                    const bannerKeys = ['banner_lateral_esq', 'banner_lateral_dir', 'banner_topo_esq', 'banner_topo_dir', 'banner_topo_ofertas', 'banner_meio_ofertas'];
+                    const configuredCount = bannerKeys.reduce((acc, key) => acc + (item[key] ? 1 : 0), 0);
+                    
+                    const date = new Date(item.created).toLocaleDateString('pt-BR', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+
+                    return `
+                        <tr>
+                            <td class="font-bold text-blue">${escapeHtml(item.search_term)}</td>
+                            <td>
+                                <span class="badge ${configuredCount === 6 ? 'badge-success' : 'badge-warning'}">
+                                    ${configuredCount} de 6 Banners
+                                </span>
+                            </td>
+                            <td class="text-light">${date}</td>
+                            <td class="actions-col">
+                                <button class="btn-edit table-btn" data-id="${item.id}">Editar</button>
+                                <button class="btn-delete-row table-btn-danger" data-id="${item.id}" data-term="${item.search_term}">Excluir</button>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+
+                // Adiciona eventos aos botões da tabela
+                document.querySelectorAll('.btn-edit').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = e.target.getAttribute('data-id');
+                        editMockup(id);
+                    });
+                });
+
+                document.querySelectorAll('.btn-delete-row').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = e.target.getAttribute('data-id');
+                        const term = e.target.getAttribute('data-term');
+                        deleteMockupDirectly(id, term);
+                    });
+                });
+            }
+
+            // Evita ataques XSS ao exibir termos cadastrados
+            function escapeHtml(text) {
+                const map = {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                };
+                return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+            }
+
+            // ==========================================
+            // 4. PREVISUALIZAÇÃO DE IMAGENS NOS INPUTS
+            // ==========================================
+
+            // Configurar alteração nos inputs de arquivos para atualizar os previews na tela do formulário
+            Object.keys(files).forEach(key => {
+                files[key].addEventListener('change', (e) => {
+                    if (e.target.files && e.target.files[0]) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                            previews[key].style.backgroundImage = `url('${event.target.result}')`;
+                            previews[key].textContent = '';
+                        };
+                        reader.readAsDataURL(e.target.files[0]);
+                    }
+                });
+            });
+
+            // ==========================================
+            // 5. CADASTRO / EDIÇÃO DE REGISTROS
+            // ==========================================
+
+            function resetForm() {
+                mockupIdInput.value = '';
+                searchTermInput.value = '';
+                Object.keys(files).forEach(key => {
+                    files[key].value = '';
+                    previews[key].style.backgroundImage = '';
+                    previews[key].textContent = 'Sem imagem';
+                });
+            }
+
+            // Preenche o formulário para edição
+            function editMockup(id) {
+                const mockup = mockupsList.find(item => item.id === id);
+                if (!mockup) return;
+
+                resetForm();
+                
+                mockupIdInput.value = mockup.id;
+                searchTermInput.value = mockup.search_term;
+
+                // Carrega previews das imagens salvas no PocketBase
+                const bannerKeys = ['banner_lateral_esq', 'banner_lateral_dir', 'banner_topo_esq', 'banner_topo_dir', 'banner_topo_ofertas', 'banner_meio_ofertas'];
+                bannerKeys.forEach(key => {
+                    if (mockup[key]) {
+                        const imgUrl = `${POCKETBASE_URL}/api/files/${mockup.collectionId}/${mockup.id}/${mockup[key]}`;
+                        previews[key].style.backgroundImage = `url('${imgUrl}')`;
+                        previews[key].textContent = '';
+                    }
+                });
+
+                showFormScreen(true);
+            }
+
+            // Submit do formulário (Criar ou Atualizar)
+            mockupForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                btnSubmit.disabled = true;
+                btnSubmit.textContent = 'Enviando arquivos...';
+
+                const recordId = mockupIdInput.value;
+                const searchTerm = searchTermInput.value.trim().toLowerCase(); // Salva sempre em minúsculo
+
+                const formData = new FormData();
+                formData.append('search_term', searchTerm);
+
+                // Adiciona apenas as imagens que foram selecionadas nos inputs de arquivo
+                Object.keys(files).forEach(key => {
+                    if (files[key].files && files[key].files[0]) {
+                        formData.append(key, files[key].files[0]);
+                    }
+                });
+
+                const isEdit = !!recordId;
+                const url = isEdit 
+                    ? `${POCKETBASE_URL}/api/collections/mockups/records/${recordId}`
+                    : `${POCKETBASE_URL}/api/collections/mockups/records`;
+                
+                const method = isEdit ? 'PATCH' : 'POST';
+
+                try {
+                    const response = await fetch(url, {
+                        method: method,
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: formData
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        alert(isEdit ? 'Mockup atualizado com sucesso!' : 'Mockup criado com sucesso!');
+                        showListScreen();
+                    } else {
+                        alert('Erro ao salvar mockup: ' + (data.message || JSON.stringify(data.data)));
+                        btnSubmit.disabled = false;
+                        btnSubmit.textContent = isEdit ? 'Atualizar Mockup' : 'Salvar Mockup';
+                    }
+                } catch (error) {
+                    console.error('Erro de envio:', error);
+                    alert('Erro de conexão ao salvar.');
+                    btnSubmit.disabled = false;
+                    btnSubmit.textContent = isEdit ? 'Atualizar Mockup' : 'Salvar Mockup';
+                }
+            });
+
+            // ==========================================
+            // 6. EXCLUSÃO DE MOCKUPS
+            // ==========================================
+
+            // Exclusão pelo formulário de edição
+            btnDelete.addEventListener('click', async () => {
+                const id = mockupIdInput.value;
+                const term = searchTermInput.value;
+                if (!id) return;
+
+                if (confirm(`Tem certeza de que deseja excluir permanentemente o mockup da palavra "${term}"?`)) {
+                    await executeDeletion(id);
+                }
+            });
+
+            // Exclusão rápida pela tabela
+            async function deleteMockupDirectly(id, term) {
+                if (confirm(`Tem certeza de que deseja excluir permanentemente o mockup da palavra "${term}"?`)) {
+                    await executeDeletion(id);
+                }
+            }
+
+            async function executeDeletion(id) {
+                try {
+                    const response = await fetch(`${POCKETBASE_URL}/api/collections/mockups/records/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+
+                    if (response.ok || response.status === 204) {
+                        alert('Mockup excluído com sucesso!');
+                        showListScreen();
+                    } else {
+                        const data = await response.json();
+                        alert('Erro ao excluir: ' + (data.message || 'Erro desconhecido'));
+                    }
+                } catch (error) {
+                    console.error('Erro ao excluir:', error);
+                    alert('Erro de rede ao tentar excluir.');
+                }
+            }
+
+            // ==========================================
+            // INICIALIZAÇÃO DO ADMIN
+            // ==========================================
+            showListScreen();
+        });
+    </script>
+</body>
+</html>
